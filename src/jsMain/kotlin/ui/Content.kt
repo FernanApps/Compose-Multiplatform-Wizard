@@ -55,8 +55,6 @@ import wizard.KotlinxSerializationPlugin
 import wizard.KtorClientDarwin
 import wizard.KtorClientOkhttp
 import wizard.KtorCore
-import wizard.LibresCompose
-import wizard.LibresPlugin
 import wizard.MokoMvvm
 import wizard.MultiplatformSettings
 import wizard.Napier
@@ -160,7 +158,6 @@ val Content = FC<AppProps> { props ->
                     }
 
                     val deps = setOf(
-                        DependencyBox(LibresCompose, true),
                         DependencyBox(Voyager, true),
                         DependencyBox(ImageLoader, true),
                         DependencyBox(listOf(Napier, Kermit), true),
@@ -247,7 +244,6 @@ private fun Set<DependencyBox>.getSelectedDependencies() =
         .map { it.selectedDep.component1() }
         .flatMap {
             when {
-                it.group == "io.github.skeptick.libres" -> listOf(LibresPlugin, LibresCompose)
                 it.group == "io.ktor" -> listOfNotNull(KtorCore, KtorClientDarwin, KtorClientOkhttp)
                 it.group == "app.cash.sqldelight" -> listOf(
                     SQLDelightPlugin,
